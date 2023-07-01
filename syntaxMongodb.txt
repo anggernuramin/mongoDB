@@ -1,0 +1,9 @@
+Syntax mongo db formatnya adalah BSON (Binary JSON)
+Tipe data BSON
+1. double : default jika kita memasukkan nomor
+Sama dengan json,yang membedakan adalah
+1. ObjectId
+    - Adalah random data yang unik,cepat untuk digenerate dan tersusun
+    - Memiliki panjang 12 byte
+    - Digunakan sebagai default _id(primery key) didocument(saat membuat isi dari collection)
+    - Jika kita tidak secara eksplisit menuliskan id dengan angka sendiri,Maka akan secara otomatis akan diisi dengan ObjectId sebagai primery key

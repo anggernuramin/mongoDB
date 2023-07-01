@@ -1,0 +1,10 @@
+Untuk menjalankan mongoDB ada hal yang harus diperhatikan, Diantaranya :
+1. Download mongoDB
+2. Lakukan Copy path /bin yang ada dilocal disk C,Dari hasil Instalasi mongoDB dan set variabel ke dalam local computer
+3. Download mongo shell Untuk menuliskan syntax query mongoDB
+4. Sebelum menjalanlan mongo server buat folder pada disk C ,dengan folder data/db
+5. Buka cmd untuk menjalankan servernya dengan ketik "mongod"  
+    Jika server berhasil dijalankan,maka akan muncul port mongoDB
+6. Buka folder hasil download mongo shell dan masuk ke mongosh.exe ke dalam folder bin 
+    Untuk menjalakan query pada mongoDB
+7. Untuk mengetes apakah mongo server sudah berjalan,ketik "show dbs" jika muncud "admin,config,local",Maka server sudah menyala
