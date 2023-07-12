@@ -162,12 +162,14 @@ db.products.updateMany(
   {},
   {
     $pullAll: {
-      ratings: [10],
+      ratings: [1000],
     },
   }
 );
+//Maka pada field ratings(fieldny adalah array) akan menghapus data 100 didalamnya,parameter dari rating[isinya adalah data yg akan dihapus]
 
 // add 100, 200, 300 to ratings
+$each; // Digunakan untuk menambahkan multiple element(data lebih dari 1),yang digunakan didalam perintah $push
 db.products.updateMany(
   {},
   {
@@ -178,8 +180,9 @@ db.products.updateMany(
     },
   }
 );
+// Hasilnya akan menambah data(sebanya 3) ke dalam field ratings
 
-// add trending, popular to tags
+// add trendinDigunakan didalam perintah $addToset dan $push,Menambah value didalam array,Namun jika valuenya sudah ada maka akan dihiraukan,jika belum maka akan ditambahkan
 db.products.updateMany(
   {},
   {
@@ -190,8 +193,10 @@ db.products.updateMany(
     },
   }
 );
+// Maka hasilnya akan menambahkan value didalam field tags,Gunakan perintah $each KARENA INGIN MEMASSUKKAN LEBIH DARI 1 VALUE DAN DIGUNAKAN DIDALAM $addToSet
 
 // add hot in posititon 1
+$position; // Digunakan didalam perintah $push untuk mengubah posisi index,saat menambahkan data
 db.products.updateMany(
   {},
   {
@@ -203,29 +208,36 @@ db.products.updateMany(
     },
   }
 );
+//Maka hasilnya adalah menambahkan value hot ke dalam field tags(ke URUTAN 1,URUTAN DIDALAMNYA DIMULAU DARI 0) gunakan $each untuk menambahkan data,Karena menggunakan $push
 
 // add all element, but limit with slice
+$slice; // Digunakan didalam $push untuk menentukan jumlah maksimal data array yang ditampilkan
 db.products.updateMany(
   {},
   {
     $push: {
       ratings: {
-        $each: [100, 200, 300, 400, 500],
+        $each: [500, 600, 700, 800, 900],
         $slice: -5,
       },
     },
   }
 );
+//Maka hasilnya akan menampilkan -5 data DARI URUTAN BELAKANG
+// jika INGIN DARI DEPAN maka cukup 5 saja(tanpa - didepan)
 
 // add all element, and sort desc
+$sort; // Digunakan untuk mengurutkan SETELAH OPERASI $push
 db.products.updateMany(
   {},
   {
     $push: {
       ratings: {
-        $each: [100, 200, 300, 400, 500],
-        $sort: -1,
+        $each: [100, 200, 300, 400, 500, 1000],
+        $sort: 1,
       },
     },
   }
 );
+// MakA hasilnya Discending dari URUTAN BESAR KE KECIL (-1)
+// jika ingin Ascending DARI KECIL KE BESAR (1)
